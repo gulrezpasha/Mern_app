@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useRef } from "react";
+import BASE_URL from "./config";
 import {
   ReactFlow,
   Background,
@@ -35,7 +36,7 @@ export default function App() {
   const promptRef = useRef("");
   const responseRef = useRef("");
 
-  // Keep prompt ref in sync
+
   const handlePromptChange = useCallback((value) => {
     promptRef.current = value;
     setNodes((nds) =>
@@ -47,7 +48,7 @@ export default function App() {
     );
   }, [setNodes]);
 
-  // Inject onChange into node data on first render
+  
   React.useEffect(() => {
     setNodes((nds) =>
       nds.map((n) =>
@@ -56,7 +57,7 @@ export default function App() {
     );
   }, [handlePromptChange, setNodes]);
 
-  // ── Animate edge while loading ──────────────────────────────────────────
+  
   const setEdgeAnimated = (animated) => {
     setEdges((eds) =>
       eds.map((e) => ({
@@ -67,7 +68,7 @@ export default function App() {
     );
   };
 
-  // ── Run Flow ────────────────────────────────────────────────────────────
+  
   const handleRun = async () => {
     const prompt = promptRef.current.trim();
     if (!prompt) return;
@@ -82,7 +83,7 @@ export default function App() {
     );
 
     try {
-      const res = await fetch("/api/ask-ai", {
+      const res = await fetch(`${BASE_URL}/api/ask-ai`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt }),
@@ -110,7 +111,7 @@ export default function App() {
     }
   };
 
-  // ── Save to MongoDB ─────────────────────────────────────────────────────
+  
   const handleSave = async () => {
     const prompt = promptRef.current.trim();
     const response = responseRef.current.trim();
@@ -118,7 +119,7 @@ export default function App() {
 
     setSaveStatus("saving");
     try {
-      const res = await fetch("/api/save", {
+      const res = await fetch(`${BASE_URL}/api/save`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt, response }),
@@ -147,7 +148,7 @@ export default function App() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
-      {/* ── Top Bar ── */}
+      
       <header style={{
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "0 24px", height: 56,
@@ -194,7 +195,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* ── React Flow Canvas ── */}
+      
       <div style={{ flex: 1, position: "relative" }}>
         <ReactFlow
           nodes={nodes}

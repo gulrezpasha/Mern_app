@@ -7,13 +7,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ── MongoDB Connection ──────────────────────────────────────────────────────
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ MongoDB error:", err));
 
-// ── Schema & Model ──────────────────────────────────────────────────────────
+
 const flowSchema = new mongoose.Schema({
   prompt: { type: String, required: true },
   response: { type: String, required: true },
@@ -61,7 +61,7 @@ app.post("/api/ask-ai", async (req, res) => {
   }
 });
 
-// ── POST /api/save ──────────────────────────────────────────────────────────
+
 app.post("/api/save", async (req, res) => {
   const { prompt, response } = req.body;
   if (!prompt || !response)
@@ -75,7 +75,8 @@ app.post("/api/save", async (req, res) => {
   }
 });
 
-// ── GET /api/history ────────────────────────────────────────────────────────
+
+
 app.get("/api/history", async (_req, res) => {
   try {
     const docs = await Flow.find().sort({ createdAt: -1 }).limit(20);

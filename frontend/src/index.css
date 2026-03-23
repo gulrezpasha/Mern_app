@@ -28,6 +28,5 @@ body {
   display: none;
 }
 
-/* React Flow canvas background */
 .react-flow__background { background: var(--bg); }
 .react-flow__attribution { display: none; }

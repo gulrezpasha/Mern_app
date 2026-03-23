@@ -27,7 +27,7 @@ const dot = (color) => ({
   width: 8, height: 8, borderRadius: "50%", background: color, flexShrink: 0,
 });
 
-// ── Input Node ───────────────────────────────────────────────────────────────
+
 export function InputNode({ data }) {
   return (
     <div style={nodeStyle}>
@@ -67,7 +67,7 @@ export function InputNode({ data }) {
   );
 }
 
-// ── Result Node ──────────────────────────────────────────────────────────────
+
 export function ResultNode({ data }) {
   const isEmpty = !data.response;
   const isLoading = data.loading;
