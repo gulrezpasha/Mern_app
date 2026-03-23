@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Syne:wght@400;600;800&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --border: #2a2a3a;
+  --accent: #6c63ff;
+  --accent2: #ff6584;
+  --text: #e8e8f0;
+  --muted: #6b6b8a;
+  --green: #4ade80;
+  --yellow: #fbbf24;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#root { width: 100vw; height: 100vh; display: flex; flex-direction: column; }
+
+.react-flow__controls-interactive {
+  display: none;
+}
+
+/* React Flow canvas background */
+.react-flow__background { background: var(--bg); }
+.react-flow__attribution { display: none; }
