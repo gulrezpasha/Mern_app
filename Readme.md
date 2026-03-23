@@ -1,5 +1,8 @@
 # ⚡ AI Flow Assignment — MERN + React Flow
 
+## 🌐 Live Demo
+👉 [Click here to view the app](https://mernappfrontend-five.vercel.app/)
+
 A full-stack app where you type a prompt into a node, click **Run Flow**, and the AI response appears in the connected node. Built with **MongoDB · Express · React · React Flow · OpenRouter**.
 
 ---
